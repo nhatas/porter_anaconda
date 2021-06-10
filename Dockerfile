@@ -19,11 +19,22 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86
   find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
   /opt/conda/bin/conda clean -afy
 
-ENV PATH=/opt/conda/bin:/storage1/fs1/floresk/Active/metallic-glass/motifextraction/packages/ppm3d/_ppm3d:$PATH
-ENV PATH=/storage1/fs1/floresk/Active/metallic-glass/motifextraction/packages/ppm3d/ppm3d:$PATH
-ENV PYTHONPATH=/storage1/fs1/floresk/Active/metallic-glass/motifextraction/packages/ppm3d:$PYTHONPATH
-ENV PYTHONPATH=/storage1/fs1/floresk/Active/metallic-glass/motifextraction/packages/motifextraction:$PYTHONPATH
-ENV PYTHONPATH=/storage1/fs1/floresk/Active/metallic-glass/motifextraction/packages/ppm3d:$PYTHONPATH
+# ENV PATH=/storage1/fs1/floresk/Active/metallic-glass/motifextraction/packages/ppm3d/_ppm3d:$PATH
+# ENV PATH=/opt/conda/bin:/storage1/fs1/floresk/Active/metallic-glass/motifextraction/packages/ppm3d/ppm3d:$PATH
+# ENV PYTHONPATH=/storage1/fs1/floresk/Active/metallic-glass/motifextraction/packages/ppm3d:$PYTHONPATH
+# ENV PYTHONPATH=/storage1/fs1/floresk/Active/metallic-glass/motifextraction/packages/motifextraction:$PYTHONPATH
+# ENV PYTHONPATH=/storage1/fs1/floresk/Active/metallic-glass/motifextraction/packages/ppm3d:$PYTHONPATH
+
+ENV PATH=/opt/conda/bin:$PATH
+# ENV PATH=/opt/conda/bin:/storage1/fs1/floresk/Active/metallic-glass/motifextraction/packages/motifextraction:$PATH
+# ENV PATH=/storage1/fs1/floresk/Active/metallic-glass/motifextraction/packages/ppm3d:$PATH
+# ENV LD_LIBRARY_PATH=/storage1/fs1/floresk/Active/metallic-glass/motifextraction/packages/ppm3d/_ppm3d:${LD_LIBRARY_PATH}
+# ENV PYTHONPATH=/storage1/fs1/floresk/Active/metallic-glass/motifextraction/packages/ppm3d:${PYTHONPATH}
+# ENV PYTHONPATH=/storage1/fs1/floresk/Active/metallic-glass/motifextraction/packages/motifextraction:${PYTHONPATH}
+# ENV PATH=/storage1/fs1/floresk/Active/metallic-glass/motifextraction/packages/ppm3d/_ppm3d:$PATH
+# ENV PYTHONPATH=/storage1/fs1/floresk/Active/metallic-glass/motifextraction/packages/ppm3d/_ppm3d:${PYTHONPATH}
+
+
 COPY environment.yml /var/tmp/environment.yml
 RUN conda env update -f /var/tmp/environment.yml && \
   rm -rf /var/tmp/environment.yml
