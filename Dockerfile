@@ -8,7 +8,7 @@ RUN apt-get update --fix-missing && \
   libxrender1 git mercurial subversion python3-dev && \
   apt-get clean
 
-RUN mkdir /app && chmod -R 777 /app
+RUN mkdir /app
 
 WORKDIR /app
 RUN git clone https://github.com/paul-voyles/motifextraction.git
@@ -16,6 +16,7 @@ WORKDIR /app/motifextraction/packages/ppm3d/
 RUN git clone https://github.com/spatala/ppm3d.git
 RUN mv ppm3d _ppm3d
 
+RUN chmod -R 777 /app
 
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
   /bin/bash ~/miniconda.sh -b -p /opt/conda && \
