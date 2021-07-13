@@ -10,11 +10,8 @@ RUN apt-get update --fix-missing && \
 
 RUN mkdir /app
 
-WORKDIR /app
-RUN git clone https://github.com/paul-voyles/motifextraction.git
-WORKDIR /app/motifextraction/packages/ppm3d/
-RUN git clone https://github.com/spatala/ppm3d.git
-RUN mv ppm3d _ppm3d
+COPY RIS-Packages/motifextraction /app/motifextraction
+COPY RIS-Packages/ppm3d /app/ppm3d
 
 RUN chmod -R 777 /app
 
@@ -31,9 +28,7 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86
 
 ENV PATH=/opt/conda/bin:$PATH
 
-COPY environment.yml /var/tmp/environment.yml
-RUN conda env update -f /var/tmp/environment.yml && \
-  rm -rf /var/tmp/environment.yml
+
 
 COPY /entrypoint.sh /opt/conda/bin/entrypoint.sh
 RUN chmod a+x /opt/conda/bin/entrypoint.sh
