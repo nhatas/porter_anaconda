@@ -10,8 +10,12 @@ RUN apt-get update --fix-missing && \
 
 RUN mkdir /app
 
-COPY packages/motifextraction /app/motifextraction
-COPY packages/ppm3d /app/ppm3d
+#COPY packages/motifextraction /app/motifextraction
+#COPY packages/ppm3d /app/ppm3d
+
+COPY packages_new /app/packages_new
+COPY packages_old /app/packages_old
+COPY packages_v3 /app/packages_v3
 
 RUN chmod -R 777 /app
 
