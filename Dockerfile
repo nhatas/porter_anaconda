@@ -8,16 +8,16 @@ RUN apt-get update --fix-missing && \
   libxrender1 git mercurial subversion python3-dev && \
   apt-get clean
 
-RUN mkdir /app
+# RUN mkdir /app
 
 #COPY packages/motifextraction /app/motifextraction
 #COPY packages/ppm3d /app/ppm3d
 
-COPY packages_new /app/packages_new
-COPY packages_old /app/packages_old
-COPY packages_v3 /app/packages_v3
+# COPY packages_new /app/packages_new
+# COPY packages_old /app/packages_old
+# COPY packages_v3 /app/packages_v3
 
-RUN chmod -R 777 /app
+# RUN chmod -R 777 /app
 
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
   /bin/bash ~/miniconda.sh -b -p /opt/conda && \

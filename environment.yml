@@ -44,4 +44,5 @@ dependencies:
   - natsort
   - conda-build
   - hdbscan
+  - scikit-learn
 
